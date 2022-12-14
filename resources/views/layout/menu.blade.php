@@ -51,8 +51,10 @@
                                         @method('DELETE')
                                         <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
                                     @elseif (auth()->user()->level == 2)
-                                        <a href="{{ route('add.to.cart', $item->id_menu) }}" class="btn btn-success"><i
-                                                class="bi bi-plus-circle-fill"></i>&nbsp;Tambah pesanan</a>
+                                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal">
+                                            Tambah Pesanan
+                                        </button>
                                     @endif
                                 </form><div>&nbsp;</div>
                                 <h4>{{ $item->nama_makanan }}</h4>
@@ -92,8 +94,12 @@
                                         @method('DELETE')
                                         <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
                                     @elseif (auth()->user()->level == 2)
-                                        <a href="{{ route('add.to.cart', $item->id_menu) }}" class="btn btn-success"><i
-                                                class="bi bi-plus-circle-fill"></i>&nbsp;Tambah pesanan</a>
+                                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal">
+                                            Tambah Pesanan
+                                        </button>
+                                        {{-- <a href="{{ route('add.to.cart', $item->id_menu) }}" class="btn btn-success"><i
+                                                class="bi bi-plus-circle-fill"></i>&nbsp;Tambah pesanan</a> --}}
                                     @endif
                                 </form><div>&nbsp;</div>
                                 <h4>{{ $item->nama_makanan }}</h4>
@@ -111,6 +117,23 @@
                     </div>
                 </div><!-- End Starter Menu Content -->
 
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Masukkan Jumlah Pesanan</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        menu
+                    </div>
+                    <div class="modal-footer">
+                        <a href="{{ route('add.to.cart', $item->id_menu) }}" class="btn btn-success"><i
+                            class="bi bi-plus-circle-fill"></i>&nbsp;Tambah pesanan</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

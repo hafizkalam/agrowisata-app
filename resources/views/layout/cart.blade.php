@@ -93,7 +93,7 @@
                         </center>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="float: left">Close</button>
+                        {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="float: left">Close</button> --}}
                         <div class="btn-group">
                             <a href="{{ route('transaksiTunai') }}" type="button" class="btn btn-warning"><i
                                     class="bi bi-cash"></i>&nbsp;Tunai</a>
