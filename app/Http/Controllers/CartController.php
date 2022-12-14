@@ -32,7 +32,7 @@ class CartController extends Controller
         } else {
             $cart[$id_menu] = [
                 "nama_makanan" => $product->nama_makanan,
-                "quantity" => 1,
+                "quantity" => $v,
                 "harga" => $product->harga,
                 "gambar" => $product->gambar
             ];

@@ -95,9 +95,9 @@
                                         @method('DELETE')
                                         <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
                                     @elseif (auth()->user()->level == 2)
-                                    <button type="button" class="btn btn-success" onClick="bukamodal('{{$item->id_menu}}', '{{ $item->nama_makanan }}')">
-                                        Tambah Pesanan
-                                    </button>
+                                        <button type="button" class="btn btn-success" onClick="bukamodal('{{$item->id_menu}}', '{{ $item->nama_makanan }}')">
+                                            Tambah Pesanan
+                                        </button>
                                         {{-- <a href="{{ route('add.to.cart', $item->id_menu) }}" class="btn btn-success"><i
                                                 class="bi bi-plus-circle-fill"></i>&nbsp;Tambah pesanan</a> --}}
                                     @endif
@@ -136,7 +136,7 @@
                             <button type="button" class="increase-btn" style="width: 30px" height="30px">+</button>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
                             <input type=button value='-' onclick='javascript:process(-1)'>
-                            <input type=test size=10 id='v' name='v' value='1'>
+                            <input type=test size=1 id='v' name='v' value='&nbsp; 1'>
                             <input type=hidden id='modal_id_menu' name='modal_id_menu'>
                             <input type=button value='+' onclick='javascript:process(1)'>
                             <a id="id_menu_herf" type="button" class="btn btn-success">
