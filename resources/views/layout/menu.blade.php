@@ -53,8 +53,7 @@
                                         @method('DELETE')
                                         <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
                                     @elseif (auth()->user()->level == 2)
-                                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal">
+                                        <button type="button" class="btn btn-success" onClick="bukamodal('{{$item->id_menu}}', '{{ $item->nama_makanan }}')">
                                             Tambah Pesanan
                                         </button>
                                     @endif
@@ -96,10 +95,9 @@
                                         @method('DELETE')
                                         <button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
                                     @elseif (auth()->user()->level == 2)
-                                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal">
-                                            Tambah Pesanan
-                                        </button>
+                                    <button type="button" class="btn btn-success" onClick="bukamodal('{{$item->id_menu}}', '{{ $item->nama_makanan }}')">
+                                        Tambah Pesanan
+                                    </button>
                                         {{-- <a href="{{ route('add.to.cart', $item->id_menu) }}" class="btn btn-success"><i
                                                 class="bi bi-plus-circle-fill"></i>&nbsp;Tambah pesanan</a> --}}
                                     @endif
@@ -128,8 +126,8 @@
                         <h5 class="modal-title" id="exampleModalLabel">Masukkan Jumlah Pesanan</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
-                        menu
+                    <div id="modal-menu" class="modal-body">
+
                     </div>
                     <div class="modal-footer">
                         <div class="modal-footer">
@@ -138,9 +136,10 @@
                             <button type="button" class="increase-btn" style="width: 30px" height="30px">+</button>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
                             <input type=button value='-' onclick='javascript:process(-1)'>
-                            <input type=test size=10 id='v' name='v' value='0'>
+                            <input type=test size=10 id='v' name='v' value='1'>
+                            <input type=hidden id='modal_id_menu' name='modal_id_menu'>
                             <input type=button value='+' onclick='javascript:process(1)'>
-                            <a href="{{ route('add.to.cart', $item->id_menu) }}"type="button" class="btn btn-success">
+                            <a id="id_menu_herf" type="button" class="btn btn-success">
                                 Tambah
                             </a>
                         </div>
@@ -153,6 +152,15 @@
     </section>
 @endsection
 <script language=javascript>
+    // $("#qty").click(function() {
+    //     alert ("ok");
+    // });
+    function bukamodal(id, nama_makanan){
+        $("#exampleModal").modal('show');
+        $("#modal_id_menu").val(id);
+        $("#id_menu_herf").attr("href","/add-to-cart/" + id);
+        $("#modal-menu").html(nama_makanan);
+    }
     function process(v){
         var value = parseInt(document.getElementById('v').value);
         value+=v;
