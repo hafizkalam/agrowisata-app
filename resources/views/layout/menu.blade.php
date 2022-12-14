@@ -37,7 +37,9 @@
                     </div>
 
                     <div class="row gy-5">
+
                         @foreach ($menu as $item)
+
                             <div class="col-lg-4 menu-item">
                                 <a href="{{ url('picture/' . $item->gambar) }}" class="glightbox">
                                     <img src="{{ url('picture/' . $item->gambar) }}" class="card-img-fluid"
@@ -130,11 +132,30 @@
                         menu
                     </div>
                     <div class="modal-footer">
-                        <a href="{{ route('add.to.cart', $item->id_menu) }}" class="btn btn-success"><i
-                            class="bi bi-plus-circle-fill"></i>&nbsp;Tambah pesanan</a>
+                        <div class="modal-footer">
+                            {{-- <button type="button" class="decrease-btn" style="width: 30px" height="30px">-</button>
+                                <input type="text" class="quantity" style="width: 40px" height="40px"  value="1">
+                            <button type="button" class="increase-btn" style="width: 30px" height="30px">+</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
+                            <input type=button value='-' onclick='javascript:process(-1)'>
+                            <input type=test size=10 id='v' name='v' value='0'>
+                            <input type=button value='+' onclick='javascript:process(1)'>
+                            <a href="{{ route('add.to.cart', $item->id_menu) }}"type="button" class="btn btn-success">
+                                Tambah
+                            </a>
+                        </div>
+                        {{-- <a href="{{ route('add.to.cart', $item->id_menu) }}" class="btn btn-success"><i
+                            class="bi bi-plus-circle-fill"></i>&nbsp;Tambah pesanan</a> --}}
                     </div>
                 </div>
             </div>
         </div>
     </section>
 @endsection
+<script language=javascript>
+    function process(v){
+        var value = parseInt(document.getElementById('v').value);
+        value+=v;
+        document.getElementById('v').value = value;
+    }
+</script>
